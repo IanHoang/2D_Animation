@@ -14,4 +14,5 @@ class Clouds {
     image(cloud4, moveX + 210, 50);
   
   }
+  
 }

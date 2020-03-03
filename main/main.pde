@@ -8,7 +8,7 @@ Tree tree7 = new Tree(365, 365, 445, 445, 420, 440, 420, 440);
 
 float rotateVal = 0.0;
 Ball meatball;
-
+Ball meatball2;
 PImage cloud;
 PImage cloud2;
 PImage cloud3;
@@ -16,6 +16,7 @@ PImage cloud4;
 Clouds c = new Clouds();
 
 int moveX;
+int moveMB; 
 void setup() {
   size(840, 480);
   cloud = loadImage("cloud.png");
@@ -23,13 +24,17 @@ void setup() {
   cloud3 = loadImage("cloud.png");
   cloud4 = loadImage("cloud.png");
   meatball = new Ball(color(#8B4513),moveX,100,2,0,20);
+  meatball2 = new Ball(color(#8B4513),moveMB,100,2,0,20);
+  
   
   c.cloud();
   moveX = 0;
+  moveMB = moveX;
 }
 
 void draw(){
   moveX++;
+  moveMB = moveX;
   
   background(250);
   background(155);
@@ -48,8 +53,15 @@ void draw(){
   meatball.gravity();
   meatball.move();
   
+  meatball2.bounce();
+  meatball2.display();
+  meatball2.gravity();
+  meatball2.move();
   //Clouds
   c.cloud();
+  if (moveX == width){
+    moveX = -100;
+  }
   
   //Trees
   rotateVal += 0.00015;
